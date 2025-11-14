@@ -1,0 +1,62 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GsheetToolsDemo#1</title>
+    <link rel="stylesheet" href="{% static 'styles/global.css' %}?v=1.0.2">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hint.css/2.7.0/hint.min.css" />
+    <style>
+        header {
+            background: #35424a;
+            color: #ffffff;
+            text-align: center;
+        }
+        footer {
+            background: #35424a;
+            color: #ffffff;
+            text-align: center;
+            padding: 10px 0;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+        main > form {
+            padding: 0.1em;
+            border: 0.15em solid white;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1 class="hint--bottom" aria-label="Click To Navigate to Index">Welcome To Sheets App</h1>
+        <p>This will demonstrate a sample application utilizing google sheets. </p>
+    </header>
+    {% block navbar %}{% endblock %}
+    <h2 class="subHeading">
+        {{page_name|default:''}}
+    </h2>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+    <footer>
+        <p>&copy; 2025 <a href="https://docs.google.com/spreadsheets/d/1Z8jNZTtw4lOgBSaudmGyzPZE4Ln1fqtyCuoCvpqktM0/edit?gid=108590706#gid=108590706" target="_blank" style="color: white;">gsheet-tools</a> @<a href="https://www.linkedin.com/in/ankit-yadav-b3157b89/" target="_blank" style="color: white;">Ankit Kumar</a> . All Rights Reserved.</p>
+    </footer>
+    <script>
+    /*
+    Clickable Header Panel
+    */
+        const headerElement = document.querySelector('body>header')
+        headerElement.addEventListener('mouseover', (event) => {
+            event.target.style.cursor = 'pointer';
+        });
+        headerElement.addEventListener('mouseout', (event) => {
+            event.target.style.cursor = 'auto';
+        });
+        headerElement.addEventListener('click', function(event){
+            window.location.href="/"
+        })
+    </script>
+</body>
+</html>

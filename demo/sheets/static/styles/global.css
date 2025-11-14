@@ -1,0 +1,45 @@
+.greyAnchorBox {
+    border: 0.15em solid lightgrey;
+    background: whitesmoke;
+    padding: 0.1em;
+    cursor: pointer;
+    text-decoration: none;
+}
+.greyAnchorBox:hover {
+    background-color: snow; /* Highlight color on hover */
+    cursor: pointer; /* Indicate interactivity */
+    font-weight: bold;
+}
+.NavTypeA {
+    /* flexbox */
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    /* positioning */
+    border: 1px solid lightgray;
+    background: whitesmoke;
+    padding: 0.2em;
+}
+
+main {
+    padding: 0.2em;
+    border: 1px solid lightgray;
+    flex-grow: 1; /* Allows the main content to expand and push the footer down */
+}
+
+.classicDisplayCard {
+    margin-top: 0.5em;
+    display: flex;
+    flex-direction: column;
+    background: whitesmoke;
+    border: 1px solid lightgray;
+    padding: 1em;
+}
+.subHeading {
+    background: whitesmoke;
+    text-align: center;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    border-left: 2px solid lightgrey;
+    border-right: 2px solid lightgrey;
+}

@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load static %}
+
+<!-- styles::Inherited -->
+<!-- header::Inherited -->
+
+{% block navbar %}
+    <nav class="NavTypeA">
+        <a href="/gauth/login" target="_blank" id="authBtn" class="greyAnchorBox hint--bottom-right" aria-label="Google Oauth2 Authentication">Authenticate</a>
+        <a href="/gauth/" id="homeBtn" class="greyAnchorBox hint--bottom" aria-label="Navigate to Gauth Page">GauthMonitor</a>
+        <a href="/sheets/" id="homeBtn" class="greyAnchorBox hint--bottom" aria-label="Sheets Home Page">Sheets</a>
+    </nav>
+{% endblock %}
+
+{% block content %}
+{% endblock %}

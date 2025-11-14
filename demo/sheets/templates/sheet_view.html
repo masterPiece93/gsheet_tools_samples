@@ -1,0 +1,124 @@
+{% extends "base.html" %}
+{% load static %}
+
+<!-- styles::Inherited -->
+<!-- header::Inherited -->
+
+{% block navbar %}
+    <nav class="NavTypeA">
+        <a href="/gauth/login" target="_blank" id="authBtn" class="greyAnchorBox hint--bottom-right" aria-label="Google Oauth2 Authentication">Authenticate</a>
+        <a href="/sheets/" id="homeBtn" class="greyAnchorBox hint--bottom" aria-label="Sheets Home Page">Home</a>
+    </nav>
+{% endblock %}
+
+{% block content %}
+    <form method="post">
+        {% csrf_token %} {# Important for security #}
+        {{ form.as_p }} {# Renders form fields within <p> tags #}
+        <button type="submit">Submit</button>
+    </form>
+    <hr>
+    <div id="results" class="classicDisplayCard" style="margin-top: 0.5em;display: flex;flex-direction: column;background: whitesmoke;"></div>
+    {% if submitted_data %}
+        {{ submitted_data|json_script:"user-data" }}
+    {% endif %}
+    <script>
+    /*
+    Binding Form Response
+    =====================
+    */ 
+        // Access the script tag by its ID and parse the content
+        const userData = JSON.parse(document.getElementById('user-data').textContent);
+
+        // Now you can use the JSON data in your JavaScript
+        // document.write("User: " + userData.name);
+        const resultBox = document.getElementById("results")
+        nameInfo = document.createElement('p')
+        nameInfo.textContent = `Name : ${userData.name}`
+        resultBox.appendChild(nameInfo)
+        emailInfo = document.createElement('p')
+        emailInfo.textContent = `Email : ${userData.email}`
+        resultBox.appendChild(emailInfo)
+        fileUrlInfo = document.createElement('p')
+        fileUrlInfo.textContent = `File Url : ${userData.file_url}`
+        resultBox.appendChild(fileUrlInfo)
+        resultInfo = document.createElement('p')
+        if (userData.is_success) {
+            resultInfo.textContent = `Result : ${userData.message}`
+        }
+        else {
+            resultInfo.textContent = `Error : ${userData.message}`
+        }
+        resultBox.appendChild(resultInfo)
+        
+        console.log(userData.permissions);
+    </script>
+{% endblock %}
+
+<!-- | --------------- | -->
+<!-- | HTML Tranlation | -->
+<!-- | --------------- | -->
+
+<!-- {% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'styles/global.css' %}?v=1.0.0">
+</head>
+<body>
+    <header>
+        <h1 style="text-align: center;">Welcome To Sheets App</h1>
+        <p style="text-align: center;">This will demonstrate a sample application utilizing google sheets. </p>
+    </header>
+    <nav class="NavTypeA">
+        <a href="/gauth/login" target="_blank" id="authBtn" class="greyAnchorBox">Authenticate</a>
+        <a href="/sheets/" id="homeBtn" class="greyAnchorBox">Home</a>
+    </nav>
+    <main>
+        <form method="post">
+            {% csrf_token %} {# Important for security #}
+            {{ form.as_p }} {# Renders form fields within <p> tags #}
+            <button type="submit">Submit</button>
+        </form>
+        <hr>
+        <div id="results" class="classicDisplayCard" style="margin-top: 0.5em;display: flex;flex-direction: column;background: whitesmoke;"></div>
+        {% if submitted_data %}
+            {{ submitted_data|json_script:"user-data" }}
+        {% endif %}
+        <script>
+        /*
+        Binding Form Response
+        =====================
+        */ 
+            // Access the script tag by its ID and parse the content
+            const userData = JSON.parse(document.getElementById('user-data').textContent);
+
+            // Now you can use the JSON data in your JavaScript
+            // document.write("User: " + userData.name);
+            const resultBox = document.getElementById("results")
+            nameInfo = document.createElement('p')
+            nameInfo.textContent = `Name : ${userData.name}`
+            resultBox.appendChild(nameInfo)
+            emailInfo = document.createElement('p')
+            emailInfo.textContent = `Email : ${userData.email}`
+            resultBox.appendChild(emailInfo)
+            fileUrlInfo = document.createElement('p')
+            fileUrlInfo.textContent = `File Url : ${userData.file_url}`
+            resultBox.appendChild(fileUrlInfo)
+            resultInfo = document.createElement('p')
+            if (userData.is_success) {
+                resultInfo.textContent = `Result : ${userData.message}`
+            }
+            else {
+                resultInfo.textContent = `Error : ${userData.message}`
+            }
+            resultBox.appendChild(resultInfo)
+            
+            console.log(userData.permissions);
+        </script>
+    </main>
+</body>
+</html> -->

@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load static %}
+
+<!-- styles::Inherited -->
+<!-- header::Inherited -->
+ 
+{% block navbar %}
+    <nav class="NavTypeA">
+        <a href="/gauth/login" target="_blank" id="authBtn" class="greyAnchorBox hint--bottom-right" aria-label="Google Oauth2 Authentication">Authenticate</a>
+        <a href="/sheets/read-sheet/" id="demoBtn" class="greyAnchorBox hint--bottom" aria-label="Navigate to Demo">Read Sheet Demo</a>
+    </nav>
+{% endblock %}
+
+
+<!-- | --------------- | -->
+<!-- | HTML Tranlation | -->
+<!-- | --------------- | -->
+
+<!-- {% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GsheetToolsDemo#1</title>
+    <link rel="stylesheet" href="{% static 'styles/global.css' %}?v=1.0.0">
+</head>
+<body>
+    <header>
+        <h1 style="text-align: center;">Welcome To Sheets App</h1>
+        <p style="text-align: center;">This will demonstrate a sample application utilizing google sheets. </p>
+    </header>
+    <nav class="NavTypeA">
+        <a href="/gauth/login" target="_blank" id="authBtn" class="greyAnchorBox">Authenticate</a>
+        <a href="/sheets/read-sheet/" id="demoBtn" class="greyAnchorBox">Read Sheet Demo</a>
+    </nav>
+</body>
+</html> -->
